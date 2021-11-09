@@ -146,14 +146,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CGameEngine.h" />
     <ClInclude Include="CGameError.h" />
     <ClInclude Include="CGraphics.h" />
+    <ClInclude Include="CInput.h" />
     <ClInclude Include="Const.h" />
     <ClInclude Include="Macro.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="app.cpp" />
+    <ClCompile Include="CGameEngine.cpp" />
     <ClCompile Include="CGraphics.cpp" />
+    <ClCompile Include="CInput.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

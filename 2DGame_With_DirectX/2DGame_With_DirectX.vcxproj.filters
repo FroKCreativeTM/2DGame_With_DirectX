@@ -19,6 +19,9 @@
     <Filter Include="01. GameEngine">
       <UniqueIdentifier>{0ae42975-3d35-4b81-86ca-86baa169025b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. GameEngine\01. Input">
+      <UniqueIdentifier>{1c6af333-0e02-42e3-872b-76169c83fff1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CGameError.h">
@@ -33,6 +36,12 @@
     <ClInclude Include="CGraphics.h">
       <Filter>02. Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="CGameEngine.h">
+      <Filter>01. GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="CInput.h">
+      <Filter>01. GameEngine\01. Input</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="app.cpp">
@@ -40,6 +49,12 @@
     </ClCompile>
     <ClCompile Include="CGraphics.cpp">
       <Filter>02. Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="CGameEngine.cpp">
+      <Filter>01. GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="CInput.cpp">
+      <Filter>01. GameEngine\01. Input</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
