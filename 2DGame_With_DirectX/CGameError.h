@@ -11,8 +11,8 @@ namespace NSGameError {
 
 class CGameError :public std::exception {
 private : 
-	int m_errorCode;			// 에러 코드를 저장한다.
-	std::string m_message;		// 이 에러의 상세 정보를 표기하기 위한 문자열 저장소
+	int				m_errorCode;	// 에러 코드를 저장한다.
+	std::string		m_message;		// 이 에러의 상세 정보를 표기하기 위한 문자열 저장소
 
 public : 
 	CGameError() throw() : m_errorCode(NSGameError::FATAL_ERROR),
@@ -31,7 +31,7 @@ public :
 	}
 
 	// 소멸자
-	virtual ~CGameError() throw() {}
+	virtual ~CGameError() {}
 
 	const char* getMessage() const throw() {
 		return this->m_message.c_str();

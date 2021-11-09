@@ -14,7 +14,7 @@
 #define LP_3D		LPDIRECT3D9
 
 /* ================== 매크로 선언 ================== */
-#define COLOR_ARGB_DWORD
+#define COLOR_ARGB DWORD
 #define SETCOLOR_ARGB(a, r, g, b) \
 	((COLOR_ARGB) ((((a) & 0xff) << 24) | (((r) & 0xff) << 16) | \
 		(((g) & 0xff) << 8) | ((b) & 0xff)))
@@ -27,6 +27,8 @@ private :
 	LP_3DDEVICE					m_device3d;
 	D3DPRESENT_PARAMETERS		m_d3dpp;
 	D3DDISPLAYMODE				m_pMode;
+
+	COLOR_ARGB  m_backColor;     
 
 	// 윈도우 관련 변수
 	HRESULT						m_result;
@@ -57,5 +59,17 @@ public :
 
 	// 디스플레이 어뎁터의 호환성을 확인하는 함수
 	bool IsAdapterCompatible();
+
+	// 디바이스 로스트를 확인한다.
+	HRESULT GetDeviceState();
+
+	// 그래픽 디바이스를 리셋한다.
+	HRESULT Reset();
+
+	void setBackColor(COLOR_ARGB c) { m_backColor = c; }
+
+	// 게임의 신을 시작하고 끝내는 함수
+	HRESULT BeginScene();
+	HRESULT EndScene();
 };
 

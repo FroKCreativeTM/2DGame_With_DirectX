@@ -50,6 +50,13 @@ public :
 	virtual void RenderGame();
 
 	// 로스트 상태가 된 그래픽 디바이스를 처리한다.
+	// if 디바이스가 유효한 상태가 아니라면
+	//		if 디바이스가 로스트 상태이며 리셋이 불가능 한 경우라면
+	//			디바이스를 복구할 때까지 기다린다.
+	//		else if 디바이스가 리셋이 가능하다면
+	//			디바이스 리셋
+	//			if 리셋이 실패한다면
+	//				반환한다.
 	virtual void HandleLostGraphicsDevice();
 
 	// 그래픽스 객체를 반환한다.

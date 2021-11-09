@@ -35,6 +35,7 @@ CGraphics::CGraphics()
     m_fullscreen = false;
     m_width = GAME_WIDTH;
     m_height = GAME_HEIGHT;
+    m_backColor = SETCOLOR_ARGB(255, 0, 0, 128); // dark blue
 }
 
 CGraphics::~CGraphics()
@@ -135,4 +136,48 @@ bool CGraphics::IsAdapterCompatible()
     }
 
     return false;
+}
+
+HRESULT CGraphics::GetDeviceState()
+{
+    m_result = E_FAIL;
+
+    if (m_device3d == nullptr) {
+        return m_result;
+    }
+    m_result = m_device3d->TestCooperativeLevel();
+    return m_result;
+}
+
+HRESULT CGraphics::Reset()
+{
+    m_result = E_FAIL;
+
+    // D3D 프레젠테이션 매개변수를 다시 초기화한다.
+    initD3DApp();
+
+    m_result = m_device3d->Reset(&m_d3dpp);
+
+    return m_result;
+
+}
+
+HRESULT CGraphics::BeginScene() {
+    m_result = E_FAIL;
+
+    if (m_device3d == nullptr) {
+        return m_result;
+    }
+
+    m_device3d->Clear(0, nullptr, D3DCLEAR_TARGET, m_backColor, 0.1f, 0);
+    m_result = m_device3d->BeginScene();
+    return m_result;
+}
+
+HRESULT CGraphics::EndScene() {
+    m_result = E_FAIL;
+    if (m_device3d) {
+        m_device3d->EndScene();
+    }
+    return m_result;
 }

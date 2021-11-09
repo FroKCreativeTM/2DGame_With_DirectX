@@ -13,28 +13,28 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="02. Graphics">
-      <UniqueIdentifier>{e316aa48-db5d-486e-b076-70fd1d44c1c4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01. GameEngine">
       <UniqueIdentifier>{0ae42975-3d35-4b81-86ca-86baa169025b}</UniqueIdentifier>
     </Filter>
     <Filter Include="01. GameEngine\01. Input">
       <UniqueIdentifier>{1c6af333-0e02-42e3-872b-76169c83fff1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. GameEngine\00. Error">
+      <UniqueIdentifier>{9b56a362-cf40-46b9-8822-9799479cfb7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. GameEngine\02. Graphics">
+      <UniqueIdentifier>{e316aa48-db5d-486e-b076-70fd1d44c1c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. SpaceWar">
+      <UniqueIdentifier>{d952fdf4-ff79-4945-8ae7-59336cefef70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CGameError.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Macro.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Const.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CGraphics.h">
-      <Filter>02. Graphics</Filter>
     </ClInclude>
     <ClInclude Include="CGameEngine.h">
       <Filter>01. GameEngine</Filter>
@@ -42,19 +42,31 @@
     <ClInclude Include="CInput.h">
       <Filter>01. GameEngine\01. Input</Filter>
     </ClInclude>
+    <ClInclude Include="CGameError.h">
+      <Filter>01. GameEngine\00. Error</Filter>
+    </ClInclude>
+    <ClInclude Include="CGraphics.h">
+      <Filter>01. GameEngine\02. Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="SpaceWar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="app.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CGraphics.cpp">
-      <Filter>02. Graphics</Filter>
     </ClCompile>
     <ClCompile Include="CGameEngine.cpp">
       <Filter>01. GameEngine</Filter>
     </ClCompile>
     <ClCompile Include="CInput.cpp">
       <Filter>01. GameEngine\01. Input</Filter>
+    </ClCompile>
+    <ClCompile Include="CGraphics.cpp">
+      <Filter>01. GameEngine\02. Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="SpaceWar.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
