@@ -16,5 +16,8 @@ public :
 	void Ai();
 	void Collisions();
 	void Render();
+
+	void ReleaseAll();
+	void ResetAll();
 };
 
