@@ -28,6 +28,12 @@
     <Filter Include="02. SpaceWar">
       <UniqueIdentifier>{d952fdf4-ff79-4945-8ae7-59336cefef70}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. GameEngine\02. Graphics\01. TextureManager">
+      <UniqueIdentifier>{5db55f96-cdca-40a2-b67b-7979328d70b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. GameEngine\02. Graphics\02. Image">
+      <UniqueIdentifier>{b992be06-8a01-47ab-8039-a9aecf2e5d6e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Macro.h">
@@ -51,6 +57,12 @@
     <ClInclude Include="SpaceWar.h">
       <Filter>02. SpaceWar</Filter>
     </ClInclude>
+    <ClInclude Include="Graphics\CTextureManager.h">
+      <Filter>01. GameEngine\02. Graphics\01. TextureManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\CImage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="app.cpp">
@@ -67,6 +79,12 @@
     </ClCompile>
     <ClCompile Include="SpaceWar.cpp">
       <Filter>02. SpaceWar</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\CTextureManager.cpp">
+      <Filter>01. GameEngine\02. Graphics\01. TextureManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\CImage.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
