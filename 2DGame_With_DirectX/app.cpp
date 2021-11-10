@@ -7,6 +7,10 @@
 #include "CGraphics.h"
 #include "Const.h"
 #include "CGameError.h"
+#include "SpaceWar.h"
+
+// 실질적인 게임을 구동하기 위한 객체
+SpaceWar* pGame = nullptr;
 
 // 윈도우 객체들
 HINSTANCE		hInst;
@@ -36,14 +40,14 @@ INT WINAPI WinMain(HINSTANCE hInstance,
 
 	MSG msg;
 	
+	pGame = new SpaceWar;
+
 	if (!InitWindow(hInstance, nCmdShow)) {
 		return false;
 	}
 
 	try {
-		pGraphics = new CGraphics;
-
-		pGraphics->Initialize(hwnd, GAME_WIDTH, GAME_HEIGHT, FULLSCREEN);
+		pGame->Initialize(hwnd);
 
 		int done = 0;
 
@@ -57,19 +61,26 @@ INT WINAPI WinMain(HINSTANCE hInstance,
 			}
 			else {
 				// 메시지가 있는 틱 아니면 그리기에 투자
-				pGraphics->ShowBackBuffer();
+				pGame->Run(hwnd);
 			}
 		}
+		SAFE_DELETE(pGame);
+		return msg.wParam;
 	}
-	catch (const CGameError& err) {
-		MessageBox(hwnd, err.getMessage(), "Error", MB_OK);
+	catch (const CGameError& err)
+	{
+		pGame->DeleteAll();
+		DestroyWindow(hwnd);
+		MessageBox(NULL, err.getMessage(), "Error", MB_OK);
 	}
-	catch (...) {
-		MessageBox(hwnd, "Unknown Error is ocurred", "Error", MB_OK);
+	catch (...)
+	{
+		pGame->DeleteAll();
+		DestroyWindow(hwnd);
+		MessageBox(NULL, "Unknown error occured in game.", "Error", MB_OK);
 	}
 
-	SAFE_DELETE(pGraphics);
-
+	SAFE_DELETE(pGame);
 	return 0;	
 }
 
@@ -141,18 +152,5 @@ bool InitWindow(HINSTANCE hInstance, int nCmdShow) {
 }
 
 LRESULT WinProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
-	switch (msg)
-	{
-	case WM_DESTROY : 
-		PostQuitMessage(0);
-		return 0;
-
-	case WM_CHAR : 
-		switch (wParam) {
-		case ESC_KEY : 
-			PostQuitMessage(0);
-			return 0;
-		}
-	}
-	return DefWindowProc(hwnd, msg, wParam, lParam);
+	return pGame->MessageHandler(hwnd, msg, wParam, lParam);
 }
