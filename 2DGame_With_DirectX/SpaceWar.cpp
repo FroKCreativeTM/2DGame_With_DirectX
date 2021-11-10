@@ -57,6 +57,45 @@ void SpaceWar::Initialize(HWND hwnd) {
 }
 
 void SpaceWar::Update() {
+	/*m_ship.Update(m_frameTime);
+
+	//// 우주선을 회전한다.
+	//m_ship.SetDegrees(m_ship.GetDegrees() + m_frameTime * ROTATION_RATE);
+
+	//// 우주선을 작게 만든다.
+	//m_ship.SetScale(m_ship.GetScale() - m_frameTime * SCALE_RATE);
+	//m_ship.SetX(m_ship.GetX() + m_frameTime * SHIP_SPEED);
+
+	//// 화면 오른쪽 바깥으로 벗어나면
+	//if (m_ship.GetX() > GAME_WIDTH) {
+	//	m_ship.SetX((float)-m_ship.GetWidth()); // 화면 왼쪽 바깥으로 옮긴다.
+	//	m_ship.SetScale(SHIP_SCALE);
+	}*/
+
+	if (m_pInput->IsKeyDown(SHIP_RIGHT_KEY)) {
+		m_ship.SetX(m_ship.GetX() + m_frameTime * SHIP_SPEED);
+		if (m_ship.GetX() > GAME_WIDTH) {
+			m_ship.SetX((float)-m_ship.GetWidth());
+		}
+	}
+	if (m_pInput->IsKeyDown(SHIP_LEFT_KEY)) {
+		m_ship.SetX(m_ship.GetX() - m_frameTime * SHIP_SPEED);
+		if (m_ship.GetX() < -m_ship.GetWidth()) {
+			m_ship.SetX((float)GAME_WIDTH);
+		}
+	}
+	if (m_pInput->IsKeyDown(SHIP_UP_KEY)) {
+		m_ship.SetY(m_ship.GetY() - m_frameTime * SHIP_SPEED);
+		if (m_ship.GetY() < -m_ship.GetHeight()) {
+			m_ship.SetY((float)GAME_HEIGHT);
+		}
+	}
+	if (m_pInput->IsKeyDown(SHIP_DOWN_KEY)) {
+		m_ship.SetY(m_ship.GetY() + m_frameTime * SHIP_SPEED);
+		if (m_ship.GetY() > GAME_HEIGHT) {
+			m_ship.SetY((float)-m_ship.GetHeight());
+		}
+	}
 	m_ship.Update(m_frameTime);
 }
 

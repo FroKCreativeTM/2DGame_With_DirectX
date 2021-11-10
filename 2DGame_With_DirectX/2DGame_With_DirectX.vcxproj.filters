@@ -61,7 +61,7 @@
       <Filter>01. GameEngine\02. Graphics\01. TextureManager</Filter>
     </ClInclude>
     <ClInclude Include="Graphics\CImage.h">
-      <Filter>01. GameEngine\02. Graphics\02. Image</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -84,7 +84,7 @@
       <Filter>01. GameEngine\02. Graphics\01. TextureManager</Filter>
     </ClCompile>
     <ClCompile Include="Graphics\CImage.cpp">
-      <Filter>01. GameEngine\02. Graphics\02. Image</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
