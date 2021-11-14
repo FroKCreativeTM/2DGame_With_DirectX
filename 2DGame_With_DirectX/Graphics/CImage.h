@@ -4,7 +4,7 @@
 #include "CTextureManager.h"
 
 class CImage {
-private : 
+protected : 
 	bool                m_initialized;  // 성공적으로 초기화시 true 
 
 	CGraphics*          m_graphics;

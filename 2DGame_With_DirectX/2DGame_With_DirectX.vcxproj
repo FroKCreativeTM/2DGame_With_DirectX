@@ -151,9 +151,12 @@
     <ClInclude Include="CGraphics.h" />
     <ClInclude Include="CInput.h" />
     <ClInclude Include="Const.h" />
+    <ClInclude Include="Entity\CEntity.h" />
+    <ClInclude Include="Entity\CShip.h" />
     <ClInclude Include="Graphics\CImage.h" />
     <ClInclude Include="Graphics\CTextureManager.h" />
     <ClInclude Include="Macro.h" />
+    <ClInclude Include="Math.h" />
     <ClInclude Include="SpaceWar.h" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +164,8 @@
     <ClCompile Include="CGameEngine.cpp" />
     <ClCompile Include="CGraphics.cpp" />
     <ClCompile Include="CInput.cpp" />
+    <ClCompile Include="Entity\CEntity.cpp" />
+    <ClCompile Include="Entity\CShip.cpp" />
     <ClCompile Include="Graphics\CImage.cpp" />
     <ClCompile Include="Graphics\CTextureManager.cpp" />
     <ClCompile Include="SpaceWar.cpp" />
