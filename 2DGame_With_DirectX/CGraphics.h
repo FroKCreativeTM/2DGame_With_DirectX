@@ -10,8 +10,6 @@
 #include "Macro.h"
 #include "Const.h"
 
-
-
 /* ================== 자료형 선언 ================== */
 #define LP_3DDEVICE LPDIRECT3DDEVICE9
 #define LP_3D		LPDIRECT3D9
@@ -138,8 +136,5 @@ public :
 	void SpriteEnd() {
 		m_sprite->End();
 	}
-
-	
-
 };
 

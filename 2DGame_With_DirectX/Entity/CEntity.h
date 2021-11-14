@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../Math.h"
-#include "../Graphics/CImage.h"
 #include "../CGameEngine.h"
+#include "../Graphics/CImage.h"
+#include "../Math.h"
 
 // 콜리전 타입을 설정한다.
 namespace NSEntity {

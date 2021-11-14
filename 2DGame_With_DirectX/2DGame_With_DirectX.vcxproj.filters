@@ -79,7 +79,7 @@
       <Filter>01. GameEngine\04. Entity</Filter>
     </ClInclude>
     <ClInclude Include="Entity\CShip.h">
-      <Filter>Header Files</Filter>
+      <Filter>02. SpaceWar\01. Entity</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -108,7 +108,7 @@
       <Filter>01. GameEngine\04. Entity</Filter>
     </ClCompile>
     <ClCompile Include="Entity\CShip.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>02. SpaceWar\01. Entity</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

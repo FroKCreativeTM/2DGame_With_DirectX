@@ -1,8 +1,7 @@
 #include "CEntity.h"
 
 // 원의 거리 방정식을 이용해서 두 원의 충돌을 검증한다.
-bool CEntity::CollideCircle(CEntity& entity, 
-    VECTOR2& collisionVector)
+bool CEntity::CollideCircle(CEntity& entity, VECTOR2& collisionVector)
 {
     // 두 중심 사이의 차이를 구한다.
     m_distSquared = *GetCenter() - *entity.GetCenter();
@@ -10,8 +9,7 @@ bool CEntity::CollideCircle(CEntity& entity,
     m_distSquared.y = m_distSquared.y * m_distSquared.y;
 
     // 각 원의 반지름의 합을 구한다.
-    m_sumRadiiSquared = (m_radius * GetScale()) +
-        (entity.m_radius * entity.GetScale());
+    m_sumRadiiSquared = (m_radius * GetScale()) + (entity.m_radius * entity.GetScale());
     m_sumRadiiSquared *= m_sumRadiiSquared;
 
     if (m_distSquared.x + m_distSquared.y <= m_sumRadiiSquared) {
@@ -321,8 +319,7 @@ void CEntity::Update(float frameTime) {
     m_rotatedBoxReady = false; // 회전된 상자의 충돌 감지.
 }
 
-void CEntity::Ai(float frameTime, CEntity& entity) {
-}
+void CEntity::Ai(float frameTime, CEntity& entity) { }
 
 bool CEntity::CollidesWith(CEntity& entity, VECTOR2& collisionVector) {
     if (!m_active || !entity.GetActive()) { // 둘 중 하나라도 비활성 상태라면
