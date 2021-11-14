@@ -8,3 +8,9 @@ WinApiGameEngine 프로젝트 (url : https://github.com/FroKCreativeTM/WinApiGameEng
 
 # 2021-11-09 
 이미지, 텍스처 및 입력 관련을 구현했습니다.
+
+# 2021-11-11
+애니메이션 구현
+
+# 2021-11-14
+각 Object 클래스(Entity)와 충돌 구현

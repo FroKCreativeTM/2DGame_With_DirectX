@@ -26,6 +26,8 @@ class CEntity : public CImage {
 protected : 
 	NSEntity::COLLISION_TYPE	m_collisionType;
 	VECTOR2						m_center;
+	VECTOR2						m_distSquared;
+	FLOAT						m_sumRadiiSquared;
 	FLOAT						m_radius;
 	RECT						m_edge;
 	VECTOR2						m_velocity;
@@ -122,6 +124,10 @@ public :
 
 	virtual FLOAT GetHealth() const {
 		return m_health;
+	}
+
+	virtual VECTOR2* GetCorner(int idx) {
+		return &m_corner[idx];
 	}
 
 	virtual void SetHealth(FLOAT health) {
