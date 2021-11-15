@@ -150,7 +150,6 @@ bool CEntity::ProjectionsOverlap(CEntity& entity) {
         return false; // 충돌이 일어나지 않은 것이다.
     }
 
-
     // 03부분
     projection = NSMath::Vector2Dot(&m_edge03, entity.GetCorner(0));
 
@@ -372,4 +371,57 @@ bool CEntity::OutsideRect(RECT rect) {
 // 이 개체는 무기에 맞아 피해를 입었다.
 // 상속받는 클래스에서는 이 함수를 재정의 해야한다.
 void CEntity::Damage(int weapon) {
+}
+
+// 다른 객체와 충돌시 튕겨 나오게 만들어준다.
+void CEntity::Bounce(VECTOR2 collisionVector, CEntity& entity) {
+    VECTOR2 vDiff = entity.GetVelocity() - m_velocity;
+    VECTOR2 cUV = collisionVector;
+
+    NSMath::Vector2Normalize(&cUV);
+
+    float cUVdotVDiff = NSMath::Vector2Dot(&cUV, &vDiff);
+    float massRatio = 2.0f;
+
+    if (GetMass() != 0) {
+        massRatio *= (entity.GetMass() / (GetMass() + entity.GetMass()));
+    }
+
+    // 만약 객체가 이미 떨어져서 이동중이면, 튕김이 이전에 호출되어있으며 여전히
+    // 충돌중인 것이다.
+    if (cUVdotVDiff > 0) {
+        SetX(GetX() - cUV.x * massRatio);
+        SetX(GetY() - cUV.y * massRatio);
+    }
+    else {
+        m_deltaVelocity += ((massRatio * cUVdotVDiff) * cUV);
+    }
+}
+
+// 다른 개체로부터 이 개체에 작용하는 중력
+// 이 개체의 속력 벡터에 중력을 추가시킨다.
+void CEntity::GravityForce(CEntity* entity, float frameTime) {
+    if (!m_active || !entity->GetActive()) {
+        // 둘 중 하나가 active상태가 아닌 경우
+        return;
+    }
+
+    // r^2 = (Ax - Bx)^2 + (Ay - By)^2
+    float rr = pow((entity->GetCenterX() - GetCenterX()), 2) +
+        pow((entity->GetCenterY() - GetCenterY()), 2);
+
+    float force = m_gravity * entity->GetMass() * m_mass / rr;
+
+    // 두 개체 사이의 벡터를 생성한다.
+    VECTOR2 gravityV(entity->GetCenterX() - GetCenterX(),
+        entity->GetCenterY() - GetCenterY());
+
+    // 벡터를 정규화한다.(길이는 1이 되지만 방향은 그대로)
+    NSMath::Vector2Normalize(&gravityV);
+
+    // 중력의 힘에 의해 정규화된 벡터를 곱해 중력 벡터를 구한다.
+    gravityV *= force * frameTime;
+
+    // 우주선의 방향을 바꾸는 중력 벡터를 우주선의 속력 벡터에 추가한다.
+    m_velocity += gravityV;
 }

@@ -8,8 +8,7 @@ const char GAME_TITLE[] = "DirectX Fullscreen";
 
 // 이미지 
 const char NEBULA_IMAGE[] = "pictures\\orion.jpg";  
-const char PLANET_IMAGE[] = "pictures\\planet.png";
-const char SHIP_IMAGE[] = "pictures\\ship.png";   
+const char GAME_IMAGE[] = "pictures\\textures.png";
 
 const bool FULLSCREEN = false;					// windowed or fullscreen
 
@@ -43,3 +42,6 @@ const UCHAR SHIP_LEFT_KEY = VK_LEFT;     // left arrow
 const UCHAR SHIP_RIGHT_KEY = VK_RIGHT;    // right arrow
 const UCHAR SHIP_UP_KEY = VK_UP;       // up arrow
 const UCHAR SHIP_DOWN_KEY = VK_DOWN;     // down arrow
+
+// 무기 타입
+enum WEAPON { TORPEDO, SHIP, PLANET };

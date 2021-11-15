@@ -81,9 +81,6 @@
     <ClInclude Include="Entity\CShip.h">
       <Filter>02. SpaceWar\01. Entity</Filter>
     </ClInclude>
-    <ClInclude Include="Entity\CPlanet.h">
-      <Filter>02. SpaceWar\01. Entity</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="app.cpp">
@@ -111,9 +108,6 @@
       <Filter>01. GameEngine\04. Entity</Filter>
     </ClCompile>
     <ClCompile Include="Entity\CShip.cpp">
-      <Filter>02. SpaceWar\01. Entity</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity\CPlanet.cpp">
       <Filter>02. SpaceWar\01. Entity</Filter>
     </ClCompile>
   </ItemGroup>

@@ -68,7 +68,8 @@ public :
 	virtual bool OutsideRect(RECT rect);
 
 	virtual void Damage(int weapon);
-
+	void Bounce(VECTOR2 collisionVector, CEntity& entity);
+	void GravityForce(CEntity* entity, float frameTime);
 
 	virtual NSEntity::COLLISION_TYPE GetCollisionType() const {
 		return m_collisionType;

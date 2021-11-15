@@ -4,15 +4,18 @@
 #include "Graphics/CTextureManager.h"
 #include "Graphics/CImage.h"
 
+#include "Entity/CShip.h"
+#include "Entity/CPlanet.h"
+
 class SpaceWar : public CGameEngine {
 private : 
 	// 필요한 변수들
 	CTextureManager m_nebulaTexture;
-	CTextureManager m_planetTexture;
-	CTextureManager m_shipTexture;
-	CImage m_planet;
+	CTextureManager m_gameTexture;
+	CPlanet m_planet;
 	CImage m_nebula;
-	CImage m_ship;
+	CShip m_ship1;
+	CShip m_ship2;
 public : 
 	// 생성자 및 소멸자
 	SpaceWar();

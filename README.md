@@ -14,3 +14,7 @@ WinApiGameEngine 프로젝트 (url : https://github.com/FroKCreativeTM/WinApiGameEng
 
 # 2021-11-14
 각 Object 클래스(Entity)와 충돌 구현
+
+# 2021-11-15 
+프레임 자르기 및 충돌 처리 완성
+중력 적용
