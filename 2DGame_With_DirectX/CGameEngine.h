@@ -3,10 +3,11 @@
 #define WINDOW_LEAN_AND_MEAN
 #include <Windows.h>
 #include <mmsystem.h>
+#include "CGameError.h"
 #include "CGraphics.h"
 #include "CInput.h"
-#include "CGameError.h"
 #include "Const.h"
+#include "Audio/CAudio.h"
 
 class CGameEngine
 {
@@ -14,6 +15,7 @@ protected :
 	// 이 엔진을 상속하는 게임들은 전부 이 자원을 사용한다.
 	CGraphics*				m_pGraphics;
 	CInput*					m_pInput;
+	CAudio*					m_pAudio;
 	HWND					m_hwnd;
 	HRESULT					m_hr;
 	LARGE_INTEGER			m_timeStart;
@@ -63,6 +65,7 @@ public :
 	CGraphics* GetGraphics() const { return m_pGraphics; }
 	// Input 객체를 반환한다.
 	CInput* GetInput() const { return m_pInput;  }
+	CAudio* GetAudio() const { return m_pAudio; }
 
 	// 게임 종료
 	void ExitGame() {

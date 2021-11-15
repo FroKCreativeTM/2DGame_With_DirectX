@@ -146,6 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Audio\CAudio.h" />
     <ClInclude Include="CGameEngine.h" />
     <ClInclude Include="CGameError.h" />
     <ClInclude Include="CGraphics.h" />
@@ -162,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="app.cpp" />
+    <ClCompile Include="Audio\CAudio.cpp" />
     <ClCompile Include="CGameEngine.cpp" />
     <ClCompile Include="CGraphics.cpp" />
     <ClCompile Include="CInput.cpp" />

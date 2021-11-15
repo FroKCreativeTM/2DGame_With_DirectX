@@ -57,21 +57,25 @@ void CShip::Update(float frameTime) {
         // 화면 오른쪽 모서리에 위치시킨다.
         m_spriteData.x = GAME_WIDTH - NSShip::WIDTH * GetScale();
         m_velocity.x = -m_velocity.x;
+        m_pAudio->PlayCue(BEEP1);
     }
     else if (m_spriteData.x < 0) { // 왼쪽 모서리 충돌
         m_spriteData.x = 0;
         m_velocity.x = -m_velocity.x;
+        m_pAudio->PlayCue(BEEP2);
     }
 
     // 화면 아래쪽 모서리에 충돌
     if (m_spriteData.y > GAME_HEIGHT - NSShip::HEIGHT * GetScale()) {
         m_spriteData.y = GAME_HEIGHT - NSShip::HEIGHT * GetScale();
         m_velocity.y = -m_velocity.y;
+        m_pAudio->PlayCue(BEEP3);
     }
 
     else if (m_spriteData.y < 0) { // 왼쪽 모서리 충돌
         m_spriteData.y = 0;
         m_velocity.y = -m_velocity.y;
+        m_pAudio->PlayCue(BEEP4);
     }
 
     if (m_isShieldOn)

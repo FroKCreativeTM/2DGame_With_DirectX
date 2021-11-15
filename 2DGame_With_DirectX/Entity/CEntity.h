@@ -3,6 +3,7 @@
 #include "../CGameEngine.h"
 #include "../Graphics/CImage.h"
 #include "../Math.h"
+#include "../Audio/CAudio.h"
 
 // 콜리전 타입을 설정한다.
 namespace NSEntity {
@@ -42,6 +43,7 @@ protected :
 	float						m_edge01Min, m_edge01Max, m_edge03Min, m_edge03Max;
 
 	CInput*						m_input;
+	CAudio*						m_pAudio;
 
 	virtual bool CollideCircle(CEntity& entity, VECTOR2& collisionVector);
 	virtual bool CollideBox(CEntity& entity, VECTOR2& collisionVector);

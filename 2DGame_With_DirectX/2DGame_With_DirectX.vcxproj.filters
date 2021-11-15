@@ -43,6 +43,9 @@
     <Filter Include="02. SpaceWar\01. Entity">
       <UniqueIdentifier>{edb3c326-dafa-4e62-b515-b7e8ee9a7e33}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. GameEngine\04. AudioManager">
+      <UniqueIdentifier>{54774449-1a7e-4962-85db-2213673d4da6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Macro.h">
@@ -84,6 +87,9 @@
     <ClInclude Include="Entity\CPlanet.h">
       <Filter>02. SpaceWar\01. Entity</Filter>
     </ClInclude>
+    <ClInclude Include="Audio\CAudio.h">
+      <Filter>01. GameEngine\04. AudioManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="app.cpp">
@@ -115,6 +121,9 @@
     </ClCompile>
     <ClCompile Include="Entity\CPlanet.cpp">
       <Filter>02. SpaceWar\01. Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio\CAudio.cpp">
+      <Filter>01. GameEngine\04. AudioManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -10,6 +10,18 @@ const char GAME_TITLE[] = "DirectX Fullscreen";
 const char NEBULA_IMAGE[] = "pictures\\orion.jpg";  
 const char GAME_IMAGE[] = "pictures\\textures.png";
 
+// 오디오
+const char WAVE_BANK[] = "Audio\\data\\Win\\WavesExample1.xwb";
+const char SOUND_BANK[] = "Audio\\data\\Win\\SoundsExample1.xsb";
+
+// 사운드 큐
+const char BEEP1[] = "beep1";
+const char BEEP2[] = "beep2";
+const char BEEP3[] = "beep3";
+const char BEEP4[] = "beep4";
+const char HIT[] = "hit";
+
+
 const bool FULLSCREEN = false;					// windowed or fullscreen
 
 const UINT  GAME_WIDTH = 640;					// width of game in pixels

@@ -84,6 +84,22 @@ void CGameEngine::Initialize(HWND hwnd) {
 	// Input 객체 초기화
 	m_pInput->Initialize(hwnd, false);
 
+	// 오디오매니저 초기화
+	m_pAudio = new CAudio();
+	if (*WAVE_BANK != '\0' && *SOUND_BANK != '\0') {
+		if (FAILED(m_hr = m_pAudio->Initialize())) {
+			if (m_hr == __HRESULT_FROM_WIN32(ERROR_FILE_NOT_FOUND)) {
+				throw(CGameError(NSGameError::FATAL_ERROR,
+					"Error initializing Audio Engine Manager \
+					because media file not found"));
+			}
+			else {
+				throw(CGameError(NSGameError::FATAL_ERROR,
+					"Error initializing Audio Engine Manager"));
+			}
+		}
+	}
+
 	// 윈도우에서 시스템콜로 제공하는 고성능의 타이머 사용을 시도한다.
 	if (QueryPerformanceFrequency(&m_timerFreq) == false) {
 		throw(CGameError(NSGameError::FATAL_ERROR,
@@ -135,6 +151,9 @@ void CGameEngine::Run(HWND hwnd) {
 	// 게임 요소들을 그려준다.
 	RenderGame();
 
+	// 오디오를 실행한다.
+	m_pAudio->Run();
+
 	m_pInput->Clear(NSInput::KEYS_PRESSED);
 }
 
@@ -151,6 +170,7 @@ void CGameEngine::DeleteAll()
 	ReleaseAll();               
 	SAFE_DELETE(m_pGraphics);
 	SAFE_DELETE(m_pInput);
+	SAFE_DELETE(m_pAudio);
 	m_initialized = false;
 }
 

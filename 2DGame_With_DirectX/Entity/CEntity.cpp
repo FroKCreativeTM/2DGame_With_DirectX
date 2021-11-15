@@ -296,6 +296,7 @@ bool CEntity::Initialize(CGameEngine* pGame,
     int width, int height, int nCols, 
     CTextureManager* textureManager) {
     m_input = pGame->GetInput();
+    m_pAudio = pGame->GetAudio();
     return (CImage::Initialize(pGame->GetGraphics(),
         width, height,
         nCols,

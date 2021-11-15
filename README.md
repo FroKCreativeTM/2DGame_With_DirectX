@@ -18,3 +18,5 @@ WinApiGameEngine 프로젝트 (url : https://github.com/FroKCreativeTM/WinApiGameEng
 # 2021-11-15 
 프레임 자르기 및 충돌 처리 완성
 중력 적용
+
+XACT를 사용한 사운드 매니저 완성
