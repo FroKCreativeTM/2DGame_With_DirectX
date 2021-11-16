@@ -114,14 +114,25 @@ public :
 	// 그래픽 디바이스를 리셋한다.
 	HRESULT Reset();
 
+	LP_3DDEVICE Get3Ddevice() const { return m_device3d; }
+
 	// 텍스처를 로딩하는 메서드
 	HRESULT LoadTexture(const char* fileName, COLOR_ARGB transColor, 
 		UINT& width, UINT& height, LP_TEXTURE & texture);
 
 	// 스프라이트를 그리기 위한 메서드
 	void DrawSprite(const SPRITE_DATA& spriteData, COLOR_ARGB color);
+	LP_SPRITE GetSprite() const { return m_sprite; }
+
 
 	void setBackColor(COLOR_ARGB c) { m_backColor = c; }
+
+
+	// 텍스처를 시스템 메모리에서 불러온다.
+	// 시스템 메모리는 기본적으로 락을 걸 수 있다
+	// 픽셀 데이터에 직접적인 접근이 가능하다.
+	// 이를 이용해서 TetureData 구조ㅔ를 채운다.
+	HRESULT LoadTextureSystemMem(const char* fileName, COLOR_ARGB transcolor, UINT& width, UINT& height, LP_TEXTURE& texture);
 
 	// 게임의 신을 시작하고 끝내는 함수
 	HRESULT BeginScene();

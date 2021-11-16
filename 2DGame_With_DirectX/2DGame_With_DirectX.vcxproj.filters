@@ -46,6 +46,9 @@
     <Filter Include="01. GameEngine\04. AudioManager">
       <UniqueIdentifier>{54774449-1a7e-4962-85db-2213673d4da6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. GameEngine\02. Graphics\03. Text">
+      <UniqueIdentifier>{9e132c86-aa0a-418a-bbad-24afa51a464d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Macro.h">
@@ -90,6 +93,12 @@
     <ClInclude Include="Audio\CAudio.h">
       <Filter>01. GameEngine\04. AudioManager</Filter>
     </ClInclude>
+    <ClInclude Include="Graphics\CText.h">
+      <Filter>01. GameEngine\02. Graphics\03. Text</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\CTextDX.h">
+      <Filter>01. GameEngine\02. Graphics\03. Text</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="app.cpp">
@@ -124,6 +133,12 @@
     </ClCompile>
     <ClCompile Include="Audio\CAudio.cpp">
       <Filter>01. GameEngine\04. AudioManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\CText.cpp">
+      <Filter>01. GameEngine\02. Graphics\03. Text</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\CTextDX.cpp">
+      <Filter>01. GameEngine\02. Graphics\03. Text</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

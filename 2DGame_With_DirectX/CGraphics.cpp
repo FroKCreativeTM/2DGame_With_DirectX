@@ -265,6 +265,51 @@ void CGraphics::DrawSprite(const SPRITE_DATA& spriteData, COLOR_ARGB color) {
     m_sprite->Draw(spriteData.texture, &spriteData.rect, nullptr, nullptr, color);
 }
 
+HRESULT CGraphics::LoadTextureSystemMem(const char* fileName, COLOR_ARGB transcolor, 
+    UINT& width, UINT& height, LP_TEXTURE& texture)  {
+    // 비트맵 파일 정보를 읽기 위한 구조체
+    D3DXIMAGE_INFO info;
+    m_result = E_FAIL;
+
+    try {
+        if (fileName == nullptr) {
+            texture = nullptr;
+            return D3DERR_INVALIDCALL;
+        }
+
+        m_result = D3DXGetImageInfoFromFile(fileName, &info);
+
+        if (m_result != D3D_OK) {
+            return m_result;
+        }
+
+        width = info.Width;
+        height = info.Height;
+
+        m_result = D3DXCreateTextureFromFileEx(
+            m_device3d,
+            fileName,
+            info.Width, info.Height,
+            1,      // 밉맵 레벨(1은 체인 없음)
+            0,      // tkdyd
+            D3DFMT_UNKNOWN, // 표현 형식
+            D3DPOOL_SYSTEMMEM,      // 시스템이 락을 걸 수 있게 한다.
+            D3DX_DEFAULT,       // 이미지 필터
+            D3DX_DEFAULT,       // 밉 피러
+            transcolor,         // 투명도를 위한 색상 키
+            &info,              // 비트맵 파일 정보 (불러온 파일로부터)
+            nullptr,            // 색상 팔레트
+            &texture            // 텍스처 목적지
+        );
+    }
+    catch (...) {
+        throw(CGameError(NSGameError::FATAL_ERROR,
+            "Error in CGraphics::LoadTeture"));
+    }
+
+    return m_result;
+}
+
 HRESULT CGraphics::BeginScene() {
     m_result = E_FAIL;
 

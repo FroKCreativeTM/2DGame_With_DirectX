@@ -157,6 +157,8 @@
     <ClInclude Include="Entity\CShip.h" />
     <ClInclude Include="Graphics\CImage.h" />
     <ClInclude Include="Graphics\CTextureManager.h" />
+    <ClInclude Include="Graphics\CText.h" />
+    <ClInclude Include="Graphics\CTextDX.h" />
     <ClInclude Include="Macro.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="SpaceWar.h" />
@@ -172,6 +174,8 @@
     <ClCompile Include="Entity\CShip.cpp" />
     <ClCompile Include="Graphics\CImage.cpp" />
     <ClCompile Include="Graphics\CTextureManager.cpp" />
+    <ClCompile Include="Graphics\CText.cpp" />
+    <ClCompile Include="Graphics\CTextDX.cpp" />
     <ClCompile Include="SpaceWar.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
