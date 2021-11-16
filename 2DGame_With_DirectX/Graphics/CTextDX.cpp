@@ -19,7 +19,7 @@ CTextDX::CTextDX()
     m_fontRect.right = GAME_WIDTH;
     m_fontRect.bottom = GAME_HEIGHT;
     m_dxFont = nullptr;
-    m_angle  = 0;
+    m_angle  = 0.0f;
 }
 
 //=============================================================================

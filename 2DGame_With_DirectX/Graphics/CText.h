@@ -4,17 +4,14 @@
 // text.h v1.0
 // Sprite based font
 
-#ifndef _text_h                 // Prevent multiple definitions if this 
-#define _text_h                 // file is included in more than one place
+#pragma once
 #define WIN32_LEAN_AND_MEAN
 
 #include <string>
 #include "CImage.h"
 #include "../Const.h"
 
-
-namespace NSText
-{
+namespace NSText {
     enum Alignment{LEFT, RIGHT, CENTER, CENTER_MIDDLE, CENTER_BOTTOM, LEFT_BOTTOM, RIGHT_BOTTOM};
     struct FontData
     {
@@ -51,30 +48,27 @@ private:
     CGraphics *         m_pGraphics;       
     UINT                m_width, m_height; 
     NSText::FontData    m_fontData[NSText::ROWS][NSText::COLUMNS]; 
-    COLOR_ARGB          m_color;               // font color (a,r,g,b)
-    COLOR_ARGB          m_backColor;           // background color (a,r,g,b)
-    UINT                m_fontHeight;               // font height in pixels
-    UINT                m_tabSize;                  // character spacing for tab
-    UINT                m_proportionalSpacing;      // spacing in pixels between proportional characters
-    bool                m_proportional;              // true for proportional spacing
+    COLOR_ARGB          m_color;               // 폰트컬러(ARGB)
+    COLOR_ARGB          m_backColor;           // 배경컬러(ARGB)
+    UINT                m_fontHeight;               // 픽셀 상에서 height
+    UINT                m_tabSize;                  // 탭 사이즈
+    UINT                m_proportionalSpacing;      
+    bool                m_proportional;              
     bool                m_underline;
     bool                m_bold;
     NSText::Alignment   m_align;        // how is text aligned (center, left, etc)
 
 public:
-    // default constructor (sprite text)
     CText();
-
-    // destructor
     virtual ~CText();
 
     //=============================================================
     // inherited member functions
     //=============================================================
 
-    // Initialize font using file texture image.
+    // 생성자
     virtual bool Initialize(CGraphics *g, const char *file);
-    // disable inherited update()
+    // Update를 진행하지 않는다
     virtual void Update(float frameTime) {};
     virtual void OnLostDevice();
     virtual void OnResetDevice();
@@ -83,34 +77,34 @@ public:
     // new member functions
     //=============================================================
 
-    // Position display point at x,y
+    // XY설정
     virtual void SetXY(int x, int y);
 
-    // Print at current x,y. Call between spriteBegin()/spriteEnd()
+    // spriteBegin()/spriteEnd() 사이에서 호출하며, X, Y축에 맞춰서 출력
     virtual void Print(const std::string &str);
 
-    // Print at x,y. Call between spriteBegin()/spriteEnd()
+    // spriteBegin()/spriteEnd() 사이에서 호출하며, 입력된 X, Y축에 맞춰서 출력
     virtual void Print(const std::string &str, int x, int y);
 
-    // Print at x,y using align. Call between spriteBegin()/spriteEnd()
+    // spriteBegin()/spriteEnd() 사이에서 호출하며, X, Y축 그리고 Alignment에 맞춰서 출력
     virtual void Print(const std::string &str, int x, int y, NSText::Alignment align);
 
-    // Determines width and height of string in pixels for current point size.
+    // WIDTH와 HEIGHT를 반환
     virtual void GetWidthHeight(const std::string &str, UINT &width, UINT &height);
 
-    // Set the font color. Use SETCOLOR_ARGB macro or colors from graphicsNS::
+    // 폰트 컬러 설정
     virtual void SetFontColor(COLOR_ARGB c) {m_color = c;}
 
-    // Returns font color
+    // 폰트 컬러 반환
     virtual COLOR_ARGB GetFontColor() {return m_color;}
 
-    // Set background color
+    // 배경 컬러 설정
     virtual void SetBackColor(COLOR_ARGB bc) {m_backColor = bc;}
 
-    // Returns background color
+    // 배경 컬러 반환
     virtual COLOR_ARGB GetBackColor() {return m_backColor;}
 
-    // Set height of font in pixels
+    // 픽셀 상에서 폰트 Height 설정
     virtual void SetFontHeight(UINT height)
     {
         if(height == 0 || height > NSText::MAX_FONT_HEIGHT)  // if invalid size
@@ -119,34 +113,34 @@ public:
         m_spriteData.scale = (float)height/(float)NSText::FONT_HEIGHT;
     }
 
-    // Returns height of font
+    // Height 반환
     virtual UINT GetFontHeight() {return m_fontHeight;}
 
-    // Set proportional spacing true/false
+    // 비례값 설정
     virtual void SetProportional(bool p) {m_proportional = p;}
 
-    // Returns proportional spacing setting
+    // 비례값 반환 설정
     virtual bool GetProportional() {return m_proportional;}
 
-    // Set the spacing used for proportional spacing
+    // 비례 간격 설정
     virtual void SetProportionalSpacing(UINT s) {m_proportionalSpacing = s;}
 
-    // Return proportional spacing size
+    // 비례 간격 반환
     virtual UINT GetProportionalSpacing() {return m_proportionalSpacing;}
 
-    // Set underline true/false
+    // 밑줄 설정
     virtual void SetUnderline(bool u) {m_underline = u;}
 
-    // Returns underline setting
+    // 밑줄 설정값 반환
     virtual bool GetUnderline() {return m_underline;}
 
-    // Set bold true/false
+    // 볼드 설정
     virtual void SetBold(bool b) {m_bold = b;}
 
-    // Returns bold setting
+    // 볼드 설정값 반환
     virtual bool GetBold() {return m_bold;}
 
-    // Set tab size
+    // 탭 사이즈 설정
     virtual void SetTabSize(UINT size)  
     {
         if(size == 0)
@@ -154,11 +148,11 @@ public:
         m_tabSize = size;
     }
 
-    // Return tab size
+    // 탭 사이즈 반환
     virtual UINT GetTabSize() {return m_tabSize;}
 
-    // Set spriteData.x,spriteData.y for current string and alignment.
-    // The default alignment is LEFT.
+    // 현재 string과 정렬값에 spriteData의 x,y값을 설정한다.
+    // 기본 값은 LEFT이다.
     virtual void DoAlign(const std::string &str);
 
     // Display character sprite described by spriteData using color and fill
@@ -166,5 +160,4 @@ public:
     virtual void DrawChar(UCHAR ch);
 };
 
-#endif
 

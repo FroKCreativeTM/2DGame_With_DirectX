@@ -6,6 +6,7 @@ CGameEngine::CGameEngine() {
 	m_paused = false;		// 
 	m_pGraphics = nullptr;	// 
 	m_initialized = false;	// 
+	m_isFPSOn = true;
 }
 
 CGameEngine::~CGameEngine() {
@@ -107,6 +108,14 @@ void CGameEngine::Initialize(HWND hwnd) {
 	}
 
 	QueryPerformanceCounter(&m_timeStart);
+
+	// dxText 글꼴 초기화
+	if (m_dxText.Initialize(m_pGraphics, NSGameEngine::POINT_SIZE, false, false, NSGameEngine::FONT) == false) {
+		throw(CGameError(NSGameError::FATAL_ERROR,
+			"Error initializing DirectX Font"));
+	}
+	m_dxText.SetFontColor(NSGameEngine::FONT_COLOR);
+
 	m_initialized = true;
 }
 
@@ -175,9 +184,21 @@ void CGameEngine::DeleteAll()
 }
 
 void CGameEngine::RenderGame() {
+	const int BUF_SIZE = 20;
+	static char buffer[BUF_SIZE];
+
 	if (SUCCEEDED(m_pGraphics->BeginScene())) {
 		// Render 메서드는 상송받는 클래스에서 반드시 구현해야 하는 순수 가상 함수이다.
 		Render();
+
+		// 스프라이트 그리기 시작
+		m_pGraphics->SpriteBegin();
+		if (m_isFPSOn) {
+			// FPS를 Cstring으로 변환
+			_snprintf_s(buffer, BUF_SIZE, "fps %d", (int)m_fps);
+			m_dxText.Print(buffer, 5, 5);
+		}
+		m_pGraphics->SpriteEnd();
 
 		m_pGraphics->EndScene();
 	}

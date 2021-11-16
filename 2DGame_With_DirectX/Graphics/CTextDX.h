@@ -4,18 +4,19 @@
 // textDX.h v1.0
 // DirectX font
 
-#ifndef _TEXTDX_H               // Prevent multiple definitions if this 
-#define _TEXTDX_H               // file is included in more than one place
+#pragma once
 #define WIN32_LEAN_AND_MEAN
 
 #include <string>
 #include "../Const.h"
 #include "../CGraphics.h"
 
+#define LP_DXFONT LPD3DXFONT 
+
 class CTextDX
 {
 private:
-    CGraphics    *      m_pGraphics;
+    CGraphics* m_pGraphics;
     COLOR_ARGB          m_color;          // font color (a,r,g,b)
     LP_DXFONT           m_dxFont;
     RECT                m_fontRect;       // text rectangle
@@ -24,52 +25,36 @@ private:
     float               m_angle;          // rotation angle of text in radians
 
 public:
-    // Constructor (sprite text)
+    // 생성&소멸자
     CTextDX();
-
-    // Destructor
     virtual ~CTextDX();
 
-    // Initialize font
-    // Pre: *g points to Graphics object
-    //      height = height in pixels
-    //      bold = true/false
-    //      italic = true/false
-    //      &fontName = name of font to use
-    virtual bool Initialize(CGraphics *g, int height, bool bold, bool italic, const std::string &fontName);
+    // DX의 폰트를 초기화한다.
+    virtual bool Initialize(CGraphics* g, int height, bool bold, bool italic, const std::string& fontName);
 
-    // Print at x,y. Call between spriteBegin()/spriteEnd()
-    // Return 0 on fail, height of text on success
-    // Pre: &str contains text to display
-    //      x, y = screen location
-    virtual int Print(const std::string &str, int x, int y);
+    // spriteBegin()/spriteEnd() 사이에서 x과 y축을 설정한다. (성공시 height 반환, 아니면 0반환)
+    virtual int Print(const std::string& str, int x, int y);
 
-    // Print inside rect using format. Call between spriteBegin()/spriteEnd()
-    // Return 0 on fail, height of text on success
-    // Pre: &str = text to display
-    //      &rect = rectangular region
-    //      format = format specifier
-    virtual int Print(const std::string &str, RECT &rect, UINT format);
+    // spriteBegin()/spriteEnd() 사이에서 불러와서 RECT안에 들어갈 글자를 설정한다.
+    virtual int Print(const std::string& str, RECT& rect, UINT format);
 
-    // Return rotation angle in degrees.
-    virtual float GetDegrees()      {return angle*(180.0f/(float)PI);}
+    // 회전 각도를 degree 형식으로 반환
+    virtual float GetDegrees() { return m_angle * (180.0f / (float)PI); }
 
-    // Return rotation angle in radians.
-    virtual float GetRadians()      {return angle;}
+    // 회전 각도를 radian 형식으로 반환
+    virtual float GetRadians() { return m_angle; }
 
-    // Returns font color
-    virtual COLOR_ARGB GetFontColor() {return color;}
+    // 컬러 반환
+    virtual COLOR_ARGB GetFontColor() { return m_color; }
 
-    // Set rotation angle in degrees.
-    // 0 degrees is up. Angles progress clockwise.
-    virtual void SetDegrees(float deg)  {angle = deg*((float)PI/180.0f);}
+    // 회전 각도를 degree 형식으로 설정
+    virtual void SetDegrees(float deg) { m_angle = deg * ((float)PI / 180.0f); }
 
-    // Set rotation angle in radians.
-    // 0 radians is up. Angles progress clockwise.
-    virtual void SetRadians(float rad)  {angle = rad;}
+    // 회전 각도를 radian 형식으로 설정(시계 방향)
+    virtual void SetRadians(float rad) { m_angle = rad; }
 
-    // Set the font color. Use SETCOLOR_ARGB macro or colors from graphicsNS::
-    virtual void SetFontColor(COLOR_ARGB c) {color = c;}
+    // 색 설정
+    virtual void SetFontColor(COLOR_ARGB c) { m_color = c; }
 
     // Release resources
     virtual void OnLostDevice();
@@ -77,6 +62,4 @@ public:
     // Restore resources
     virtual void OnResetDevice();
 };
-
-#endif
 

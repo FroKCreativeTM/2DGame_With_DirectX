@@ -20,3 +20,9 @@ WinApiGameEngine 프로젝트 (url : https://github.com/FroKCreativeTM/WinApiGameEng
 중력 적용
 
 XACT를 사용한 사운드 매니저 완성
+
+# 2021-11-16
+텍스트 매니저 완성
+
+# 2021-11-17
+FPS 출력 구현

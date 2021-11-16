@@ -9,6 +9,15 @@
 #include "Const.h"
 #include "Audio/CAudio.h"
 
+#include "Graphics/CText.h"
+#include "Graphics/CTextDX.h"
+
+namespace NSGameEngine {
+	const char FONT[] = "Courier New";
+	const int POINT_SIZE = 14;
+	const COLOR_ARGB FONT_COLOR = SETCOLOR_ARGB(255, 255, 255, 255);
+}
+
 class CGameEngine
 {
 protected : 
@@ -22,10 +31,17 @@ protected :
 	LARGE_INTEGER			m_timeEnd;
 	LARGE_INTEGER			m_timerFreq;
 	float					m_frameTime;
-	float					m_fps;
 	DWORD					m_sleepTime;
 	bool					m_paused;
 	bool					m_initialized;
+
+	// 텍스트 관련 멤버 변수
+	CText					m_text;
+	CTextDX					m_dxText;
+
+	// FPS 관련 변수
+	float					m_fps;
+	bool					m_isFPSOn;
 
 public : 
 	CGameEngine();

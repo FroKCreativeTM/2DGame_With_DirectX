@@ -1,4 +1,5 @@
 #pragma once
+
 #define WIN32_LEAN_AND_MEAN
 #ifdef _DEBUG
 #define D3D_DEBUG_INFO
@@ -84,6 +85,7 @@ private :
 	bool						m_fullscreen;
 	int							m_width;
 	int							m_height;
+
 
 	// 엔진 내부에서만 사용하는 D3D 프레젠테이션 
 	// 매개변수를 초기화한다.
