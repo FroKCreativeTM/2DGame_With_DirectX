@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -155,6 +155,7 @@
     <ClInclude Include="Entity\CEntity.h" />
     <ClInclude Include="Entity\CPlanet.h" />
     <ClInclude Include="Entity\CShip.h" />
+    <ClInclude Include="Graphics\CConsole.h" />
     <ClInclude Include="Graphics\CImage.h" />
     <ClInclude Include="Graphics\CTextureManager.h" />
     <ClInclude Include="Graphics\CText.h" />
@@ -172,6 +173,7 @@
     <ClCompile Include="Entity\CEntity.cpp" />
     <ClCompile Include="Entity\CPlanet.cpp" />
     <ClCompile Include="Entity\CShip.cpp" />
+    <ClCompile Include="Graphics\CConsole.cpp" />
     <ClCompile Include="Graphics\CImage.cpp" />
     <ClCompile Include="Graphics\CTextureManager.cpp" />
     <ClCompile Include="Graphics\CText.cpp" />

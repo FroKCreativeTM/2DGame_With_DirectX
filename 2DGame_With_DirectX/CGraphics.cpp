@@ -158,9 +158,15 @@ HRESULT CGraphics::Reset()
 
     // D3D 프레젠테이션 매개변수를 다시 초기화한다.
     initD3DApp();
-
+    m_sprite->OnLostDevice();
     m_result = m_device3d->Reset(&m_d3dpp);
 
+    // 프리미티브의 알파 브렌딩을 위한 설정
+    m_device3d->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
+    m_device3d->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
+    m_device3d->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+
+    m_sprite->OnResetDevice();
     return m_result;
 
 }
@@ -263,6 +269,60 @@ void CGraphics::DrawSprite(const SPRITE_DATA& spriteData, COLOR_ARGB color) {
     m_sprite->SetTransform(&matrix);
 
     m_sprite->Draw(spriteData.texture, &spriteData.rect, nullptr, nullptr, color);
+}
+
+// 사각형을 그린다.
+// 기본적으로 OpenGL이나 DirectX의 경우에는 
+// 그리기 단위가 점 선 그리고 삼각형이다.
+// 이 삼각형을 조합하면 사각형을 그려낼 수 있다.
+bool CGraphics::DrawQuad(LP_VERTEXBUFFER vertexBuffer) {
+    HRESULT result = E_FAIL;
+    if (vertexBuffer == nullptr) {  // 버텍스 버퍼가 비어있다면
+        return false;
+    }
+
+    m_device3d->SetRenderState(D3DRS_ALPHABLENDENABLE, true); // 알파 블렌딩 설정 on.
+
+    // (스트림 번호) (정점 버퍼 이름) (스트림의 시작부터 정점 데이터의 시작까지의 바이트 단위 오프셋) (성점 하나 크기)
+    m_device3d->SetStreamSource(0, vertexBuffer, 0, sizeof(VertexC));
+    m_device3d->SetFVF(D3DFVF_VERTEX);
+
+    // 프리미티브 타입에 맞춰 그린다.
+    result = m_device3d->DrawPrimitive(D3DPT_TRIANGLEFAN, 0, 2);
+
+    // 다시 해제
+    m_device3d->SetRenderState(D3DRS_ALPHABLENDENABLE, false);
+
+    if (FAILED(result)) {
+        return false;
+    }
+
+    return true;
+}
+
+// 정점 버퍼를 생성한다.
+HRESULT CGraphics::CreateVertexBuffer(VertexC vertices[], UINT size, 
+    LP_VERTEXBUFFER& vertexBuffer) {
+    HRESULT result = E_FAIL;
+
+    result = m_device3d->CreateVertexBuffer(size, D3DUSAGE_WRITEONLY,
+        D3DFVF_VERTEX, D3DPOOL_DEFAULT, &vertexBuffer, nullptr);
+    if (FAILED(result)) {
+        return result;
+    }
+
+    void* ptr;
+    // 데이터를 전송하기 전에 먼저, 락을 걸어야한다.
+    result = vertexBuffer->Lock(0, size, (void**)&ptr, 0);
+
+    if (FAILED(result)) {
+        return result;
+    }
+
+    memcpy(ptr, vertices, size);
+    vertexBuffer->Unlock();
+
+    return result;
 }
 
 HRESULT CGraphics::LoadTextureSystemMem(const char* fileName, COLOR_ARGB transcolor, 

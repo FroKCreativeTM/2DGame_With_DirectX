@@ -12,10 +12,11 @@
 #include "Const.h"
 
 /* ================== 자료형 선언 ================== */
-#define LP_3DDEVICE LPDIRECT3DDEVICE9
-#define LP_3D		LPDIRECT3D9
-#define LP_TEXTURE  LPDIRECT3DTEXTURE9
-#define LP_SPRITE   LPD3DXSPRITE
+#define LP_3DDEVICE			LPDIRECT3DDEVICE9
+#define LP_3D				LPDIRECT3D9
+#define LP_TEXTURE			LPDIRECT3DTEXTURE9
+#define LP_SPRITE			LPD3DXSPRITE
+#define LP_VERTEXBUFFER		IDirect3DVertexBuffer9*
 
 /* ================== 구조체 선언 ================== */
 typedef struct _tagSpriteData {
@@ -65,6 +66,16 @@ namespace NSGraphics
 
 	enum DISPLAY_MODE { TOGGLE, FULLSCREEN, WINDOW };
 }
+
+struct VertexC {
+	float x, y, z;			// DirectX는 3D기 때문에 3개의 축을 중심으로 한다.
+	float rhw;				// homogeneous w의 역수 좌표로써 1로 세팅한다.  
+	unsigned long color;	// 버텍스의 컬러를 지칭한다.
+};
+
+// D3DFVF_XYZRHW : 이 버텍스들은 transform되었다.
+// D3DFVF_XYZRHW : 디퓨즈(난반사) 컬러 데이터를 가지고 있다.
+#define D3DFVF_VERTEX (D3DFVF_XYZRHW | D3DFVF_DIFFUSE)
 
 class CGraphics
 {
@@ -129,6 +140,10 @@ public :
 
 	void setBackColor(COLOR_ARGB c) { m_backColor = c; }
 
+	// Quad를 그리는 함수
+	bool DrawQuad(LP_VERTEXBUFFER vertexBuffer);
+	// 정점 버퍼를 생성하는 함수
+	HRESULT CreateVertexBuffer(VertexC vertices[], UINT size, LP_VERTEXBUFFER& vertexBuffer);
 
 	// 텍스처를 시스템 메모리에서 불러온다.
 	// 시스템 메모리는 기본적으로 락을 걸 수 있다

@@ -37,6 +37,7 @@ const float MAX_FRAME_TIME = 1.0f / MIN_FRAME_RATE;		// maximum time used in cal
 const UCHAR ESC_KEY = VK_ESCAPE;		// escape key
 const UCHAR ALT_KEY = VK_MENU;			// Alt key
 const UCHAR ENTER_KEY = VK_RETURN;		// Enter key
+const UCHAR CONSOLE_KEY = VK_OEM_3;		// ~키
 
 // 플레이어 관련 변수
 const int  SHIP_START_FRAME = 0;            // 플레이어 쉽 애니메이션 시작 프레임

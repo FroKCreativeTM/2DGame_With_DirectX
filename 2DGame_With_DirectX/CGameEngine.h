@@ -8,7 +8,7 @@
 #include "CInput.h"
 #include "Const.h"
 #include "Audio/CAudio.h"
-
+#include "Graphics/CConsole.h"
 #include "Graphics/CText.h"
 #include "Graphics/CTextDX.h"
 
@@ -42,6 +42,10 @@ protected :
 	// FPS 관련 변수
 	float					m_fps;
 	bool					m_isFPSOn;
+
+	// 콘솔 관련
+	CConsole*				m_console;
+	std::string				m_command;
 
 public : 
 	CGameEngine();
@@ -93,5 +97,8 @@ public :
 	virtual void Ai() = 0;
 	virtual void Collisions() = 0;
 	virtual void Render() = 0;
+
+	/* ======================== 콘솔 관련 메서드 ======================== */
+	virtual void ConsoleCommand();
 };
 

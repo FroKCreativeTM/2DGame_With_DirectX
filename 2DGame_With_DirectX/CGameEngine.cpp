@@ -6,7 +6,8 @@ CGameEngine::CGameEngine() {
 	m_paused = false;		// 
 	m_pGraphics = nullptr;	// 
 	m_initialized = false;	// 
-	m_isFPSOn = true;
+	m_isFPSOn = false;
+	m_console = nullptr;
 }
 
 CGameEngine::~CGameEngine() {
@@ -116,6 +117,11 @@ void CGameEngine::Initialize(HWND hwnd) {
 	}
 	m_dxText.SetFontColor(NSGameEngine::FONT_COLOR);
 
+	// 콘솔 초기화
+	m_console = new CConsole();
+	m_console->Initialize(m_pGraphics, m_pInput);
+	m_console->Print("----Console----");
+
 	m_initialized = true;
 }
 
@@ -163,15 +169,28 @@ void CGameEngine::Run(HWND hwnd) {
 	// 오디오를 실행한다.
 	m_pAudio->Run();
 
+	// 콘솔 키를 확인한다.
+	if (m_pInput->WasKeyPressed(CONSOLE_KEY)) {
+		m_console->ShowHide();
+		m_paused = m_console->GetVisible();
+	}
+	ConsoleCommand();
+
 	m_pInput->Clear(NSInput::KEYS_PRESSED);
 }
 
 void CGameEngine::ReleaseAll()
 {
+	SAFE_ON_LOST_DEVICE(m_console);
+	m_dxText.OnLostDevice();
+	return;
 }
 
 void CGameEngine::ResetAll()
 {
+	m_dxText.OnResetDevice();
+	SAFE_ON_RESET_DEVICE(m_console);
+	return;
 }
 
 void CGameEngine::DeleteAll()
@@ -180,6 +199,7 @@ void CGameEngine::DeleteAll()
 	SAFE_DELETE(m_pGraphics);
 	SAFE_DELETE(m_pInput);
 	SAFE_DELETE(m_pAudio);
+	SAFE_DELETE(m_console);
 	m_initialized = false;
 }
 
@@ -199,6 +219,7 @@ void CGameEngine::RenderGame() {
 			m_dxText.Print(buffer, 5, 5);
 		}
 		m_pGraphics->SpriteEnd();
+		m_console->Draw();
 
 		m_pGraphics->EndScene();
 	}
@@ -237,4 +258,29 @@ void CGameEngine::HandleLostGraphicsDevice() {
 			return;
 		}
 	}
+}
+
+// 콘솔 명령을 처리한다.
+// 새 콘솔 명령이 추가되면 상속받은 클래스에서 이 함수를 오버라이딩한다.
+void CGameEngine::ConsoleCommand() {
+	m_command = m_console->GetCommand();
+
+	if (m_command == "") { // 명령이 아니라면
+		return;
+	}
+	if (m_command == "help") {
+		m_console->Print("Console command : ");
+		m_console->Print("fps - toggle display of frames per second");
+		return;
+	}
+	if (m_command == "fps") {
+		m_isFPSOn = !m_isFPSOn;
+		if (m_isFPSOn) {
+			m_console->Print("fps on");
+		}
+		else {
+			m_console->Print("fps off");
+		}
+	}
+
 }

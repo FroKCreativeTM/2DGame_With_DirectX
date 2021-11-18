@@ -37,7 +37,7 @@ template <typename T>
 inline void safeOnLostDevice(T& ptr)
 {
     if (ptr)
-        ptr->onLostDevice();
+        ptr->OnLostDevice();
 }
 #define SAFE_ON_LOST_DEVICE safeOnLostDevice 
 
@@ -45,7 +45,7 @@ template <typename T>
 inline void safeOnResetDevice(T& ptr)
 {
     if (ptr)
-        ptr->onResetDevice();
+        ptr->OnResetDevice();
 }
 #define SAFE_ON_RESET_DEVICE safeOnResetDevice
 

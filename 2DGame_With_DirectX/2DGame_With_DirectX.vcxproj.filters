@@ -49,6 +49,9 @@
     <Filter Include="01. GameEngine\02. Graphics\03. Text">
       <UniqueIdentifier>{9e132c86-aa0a-418a-bbad-24afa51a464d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. GameEngine\02. Graphics\04. Console">
+      <UniqueIdentifier>{7a1a5104-8f4c-4e05-9926-0a001c2f040b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Macro.h">
@@ -99,6 +102,9 @@
     <ClInclude Include="Graphics\CTextDX.h">
       <Filter>01. GameEngine\02. Graphics\03. Text</Filter>
     </ClInclude>
+    <ClInclude Include="Graphics\CConsole.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="app.cpp">
@@ -139,6 +145,9 @@
     </ClCompile>
     <ClCompile Include="Graphics\CTextDX.cpp">
       <Filter>01. GameEngine\02. Graphics\03. Text</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\CConsole.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
