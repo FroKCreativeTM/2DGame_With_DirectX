@@ -14,6 +14,7 @@ namespace NSEntity {
 		ROTATED_BOX,
 	};
 
+	// 디버깅 해서 겨우 찾은 값
 	const FLOAT GRAVITY = 6.67428e-11f;
 }
 

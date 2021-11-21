@@ -152,7 +152,6 @@ void CGameEngine::Run(HWND hwnd) {
 	}
 
 	m_timeStart = m_timeEnd;	// 시간 저장
-	// m_pInput->ReadContollers(); // 컨트롤러 상태를 읽는다. (추후 컨트롤러 지원 예정)
 	
 	// update, ai, collisions는 순수 가상함수다.
 	// 이 함수들은 이 엔진을 상속받은 게임들이 구현해야하는 함수이다.
@@ -170,11 +169,16 @@ void CGameEngine::Run(HWND hwnd) {
 	m_pAudio->Run();
 
 	// 콘솔 키를 확인한다.
-	if (m_pInput->WasKeyPressed(CONSOLE_KEY)) {
+	if (m_pInput->GetCharIn() == CONSOLE_KEY) {
+		m_pInput->ClearCharIn();       // clear last char
 		m_console->ShowHide();
 		m_paused = m_console->GetVisible();
 	}
 	ConsoleCommand();
+	m_pInput->ReadControllers(); // 컨트롤러 상태를 읽는다. (추후 컨트롤러 지원 예정)
+
+	// m_messageDialog->update();
+	// m_inputDialog->update();
 
 	m_pInput->Clear(NSInput::KEYS_PRESSED);
 }
