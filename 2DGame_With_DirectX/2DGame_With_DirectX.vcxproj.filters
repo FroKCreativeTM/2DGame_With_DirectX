@@ -105,6 +105,9 @@
     <ClInclude Include="Graphics\CConsole.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Entity\CTorpedo.h">
+      <Filter>02. SpaceWar\01. Entity</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="app.cpp">
@@ -148,6 +151,9 @@
     </ClCompile>
     <ClCompile Include="Graphics\CConsole.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity\CTorpedo.cpp">
+      <Filter>02. SpaceWar\01. Entity</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

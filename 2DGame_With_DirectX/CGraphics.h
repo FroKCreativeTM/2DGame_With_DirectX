@@ -138,7 +138,7 @@ public :
 	LP_SPRITE GetSprite() const { return m_sprite; }
 
 
-	void setBackColor(COLOR_ARGB c) { m_backColor = c; }
+	void SetBackColor(COLOR_ARGB c) { m_backColor = c; }
 
 	// Quad를 그리는 함수
 	bool DrawQuad(LP_VERTEXBUFFER vertexBuffer);
@@ -148,7 +148,7 @@ public :
 	// 텍스처를 시스템 메모리에서 불러온다.
 	// 시스템 메모리는 기본적으로 락을 걸 수 있다
 	// 픽셀 데이터에 직접적인 접근이 가능하다.
-	// 이를 이용해서 TetureData 구조ㅔ를 채운다.
+	// 이를 이용해서 TetureData 구조체를 채운다.
 	HRESULT LoadTextureSystemMem(const char* fileName, COLOR_ARGB transcolor, UINT& width, UINT& height, LP_TEXTURE& texture);
 
 	// 게임의 신을 시작하고 끝내는 함수

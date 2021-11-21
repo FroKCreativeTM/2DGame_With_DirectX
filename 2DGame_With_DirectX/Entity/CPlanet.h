@@ -17,5 +17,7 @@ namespace NSPlanet {
 class CPlanet : public CEntity {
 public : 
 	CPlanet();
+    void Disable() { m_visible = false; m_active = false; }
+    void Able() { m_visible = true; m_active = true; }
 };
 

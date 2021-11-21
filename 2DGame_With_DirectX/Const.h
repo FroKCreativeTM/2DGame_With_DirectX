@@ -11,15 +11,20 @@ const char NEBULA_IMAGE[] = "pictures\\orion.jpg";
 const char GAME_IMAGE[] = "pictures\\textures.png";
 
 // 오디오
-const char WAVE_BANK[] = "Audio\\data\\Win\\WavesExample1.xwb";
-const char SOUND_BANK[] = "Audio\\data\\Win\\SoundsExample1.xsb";
+const char WAVE_BANK[] = "Audio\\data\\Win\\waveBank.xwb";
+const char SOUND_BANK[] = "Audio\\data\\Win\\soundBank.xsb";
+const char XGS_FILE[] = "Audio\\data\\Win\\SpaceWar.xgs";
 
 // 사운드 큐
-const char BEEP1[] = "beep1";
-const char BEEP2[] = "beep2";
-const char BEEP3[] = "beep3";
-const char BEEP4[] = "beep4";
-const char HIT[] = "hit";
+const char CHEER[] = "cheer";
+const char COLLIDE[] = "collide";
+const char EXPLODE[] = "explode";
+const char ENGINE1[] = "engine1";
+const char ENGINE2[] = "engine2";
+const char TORPEDO_CRASH[] = "torpedoCrash";
+const char TORPEDO_FIRE[] = "torpedoFire";
+const char TORPEDO_HIT[] = "torpedoHit";
+const char ACTION_THEME[] = "actionTheme";
 
 
 const bool FULLSCREEN = false;					// windowed or fullscreen
