@@ -62,7 +62,8 @@ namespace NSGraphics
 	const COLOR_ARGB FILTER = D3DCOLOR_ARGB(0, 0, 0, 0);			// colorFilter를 명시해서 그릴 때 사용
 	const COLOR_ARGB ALPHA25 = D3DCOLOR_ARGB(64, 255, 255, 255);  	// 25% 알파값
 	const COLOR_ARGB ALPHA50 = D3DCOLOR_ARGB(128, 255, 255, 255); 	// 50% 알파값
-	const COLOR_ARGB BACK_COLOR = NAVY;								
+	const COLOR_ARGB BACK_COLOR = NAVY;			
+	const COLOR_ARGB TRANSCOLOR = MAGENTA;
 
 	enum DISPLAY_MODE { TOGGLE, FULLSCREEN, WINDOW };
 }

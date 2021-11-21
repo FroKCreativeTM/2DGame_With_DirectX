@@ -163,6 +163,7 @@
     <ClInclude Include="Graphics\CTextDX.h" />
     <ClInclude Include="Macro.h" />
     <ClInclude Include="Math.h" />
+    <ClInclude Include="Scene\CDashboard.h" />
     <ClInclude Include="SpaceWar.h" />
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +181,7 @@
     <ClCompile Include="Graphics\CTextureManager.cpp" />
     <ClCompile Include="Graphics\CText.cpp" />
     <ClCompile Include="Graphics\CTextDX.cpp" />
+    <ClCompile Include="Scene\CDashboard.cpp" />
     <ClCompile Include="SpaceWar.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

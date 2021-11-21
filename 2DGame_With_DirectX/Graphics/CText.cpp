@@ -14,7 +14,7 @@ CText::CText() : CImage()
     m_file = NULL;                        // font texture
     m_graphics = NULL;                    // pointer to graphics
     m_color = NSGraphics::WHITE;          // default to white font
-    m_backColor = TRANSCOLOR;             // default to transparent (no) fill
+    m_backColor = NSGraphics::TRANSCOLOR;             // default to transparent (no) fill
     m_align = NSText::LEFT;
     m_width = NSText::GRID_WIDTH - 3;     // -2 for transparent border and -1 for divider line
     m_height = NSText::GRID_HEIGHT - 3;
@@ -65,7 +65,7 @@ bool CText::Initialize(CGraphics *g, const char *file)
 
         // Load font texture into system memory so it may be locked
         UINT w,h;
-        HRESULT result = m_pGraphics->LoadTextureSystemMem(file, TRANSCOLOR, w, h, m_textureData);
+        HRESULT result = m_pGraphics->LoadTextureSystemMem(file, NSGraphics::TRANSCOLOR, w, h, m_textureData);
         if (FAILED(result))
         {
             SAFE_RELEASE(m_textureData);
@@ -455,7 +455,7 @@ void CText::DrawChar(UCHAR ch)
     SPRITE_DATA sd2 = m_spriteData;    // copy sprite data
 
     // display backColor color
-    if(m_backColor != TRANSCOLOR)     // if backColor is not transparent
+    if(m_backColor != NSGraphics::TRANSCOLOR)     // if backColor is not transparent
     {
         m_spriteData.rect.top = (NSText::SOLID-NSText::MIN_CHAR) / NSText::COLUMNS * NSText::GRID_HEIGHT + 1;
         m_spriteData.rect.bottom = m_spriteData.rect.top + NSText::GRID_HEIGHT - 2;

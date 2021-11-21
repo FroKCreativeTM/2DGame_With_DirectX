@@ -33,5 +33,11 @@ public :
 	// 사운드 뱅크의 큐에서 지정한 사운드를 멈춘다.
 	// 큐가 존재하지 않더라도 에러를 발생시키지 않는다.
 	void StopCue(const char* cue);
+
+	// 카테고리를 전달하면 그에 맞는 카테고리 음악을 중단한다.
+	void PauseCategory(const char category[]);
+
+	// 카테고리를 전달하면 그에 맞는 카테고리 음악을 다시 실행한다.
+	void ResumeCategory(const char category[]);
 };
 

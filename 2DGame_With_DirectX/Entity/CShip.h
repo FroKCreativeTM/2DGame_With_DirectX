@@ -8,7 +8,7 @@ namespace NSShip {
     const int           HEIGHT = 32;                  
     const int           X = GAME_WIDTH / 2 - WIDTH / 2;  
     const int           Y = GAME_HEIGHT / 2 - HEIGHT / 2;
-    const float         ROTATION_RATE = (float)PI / 4; 
+    const float         ROTATION_RATE = (float)PI; 
     const float         SPEED = 100;                
     const float         MASS = 300.0f;              
     enum class          DIRECTION { NONE, LEFT, RIGHT };
@@ -62,7 +62,7 @@ public :
         CTextureManager* pTexture);
     void Draw();
     void Update(float frameTime);
-    void Damage(int weapon);
+    void Damage(WEAPON weapon);
 
     void ToOldPosition() {
         m_spriteData.x = m_oldX;

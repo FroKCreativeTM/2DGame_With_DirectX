@@ -48,5 +48,3 @@ inline void safeOnResetDevice(T& ptr)
         ptr->OnResetDevice();
 }
 #define SAFE_ON_RESET_DEVICE safeOnResetDevice
-
-#define TRANSCOLOR  SETCOLOR_ARGB(0,255,0,255)  // transparent color (magenta)

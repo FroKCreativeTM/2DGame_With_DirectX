@@ -135,3 +135,19 @@ void CAudio::StopCue(const char* cue) {
 	m_cueIdx = m_soundBank->GetCueIndex(cue);
 	m_soundBank->Stop(m_cueIdx, XACT_FLAG_SOUNDBANK_STOP_IMMEDIATE);
 }
+
+void CAudio::PauseCategory(const char category[]) {
+	if (m_soundBank == nullptr) {
+		return;
+	}
+	XACTCATEGORY iCategory = m_xactEngine->GetCategory(category);
+	m_xactEngine->Pause(iCategory, true);
+}
+
+void CAudio::ResumeCategory(const char category[]) {
+	if (m_soundBank == nullptr) {
+		return;
+	}
+	XACTCATEGORY iCategory = m_xactEngine->GetCategory(category);
+	m_xactEngine->Pause(iCategory, false);
+}

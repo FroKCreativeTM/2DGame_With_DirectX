@@ -14,7 +14,7 @@ namespace NSEntity {
 		ROTATED_BOX,
 	};
 
-	const FLOAT GRAVITY = 9.81f;
+	const FLOAT GRAVITY = 6.67428e-11f;
 }
 
 // 이 클래스가 하는거
@@ -41,6 +41,8 @@ protected :
 	VECTOR2						m_corner[4];
 	VECTOR2						m_edge01, m_edge03;  
 	float						m_edge01Min, m_edge01Max, m_edge03Min, m_edge03Max;
+	float						m_rr;
+	float						m_force;
 
 	CInput*						m_input;
 	CAudio*						m_pAudio;

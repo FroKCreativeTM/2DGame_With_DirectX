@@ -1,3 +1,4 @@
+#include <cmath>
 #include "CEntity.h"
 
 // 원의 거리 방정식을 이용해서 두 원의 충돌을 검증한다.
@@ -408,10 +409,9 @@ void CEntity::GravityForce(CEntity* entity, float frameTime) {
     }
 
     // r^2 = (Ax - Bx)^2 + (Ay - By)^2
-    float rr = pow((entity->GetCenterX() - GetCenterX()), 2) +
+    m_rr = pow((entity->GetCenterX() - GetCenterX()), 2) +
         pow((entity->GetCenterY() - GetCenterY()), 2);
-
-    float force = m_gravity * entity->GetMass() * m_mass / rr;
+    m_force = m_gravity * entity->GetMass() * m_mass / m_rr;
 
     // 두 개체 사이의 벡터를 생성한다.
     VECTOR2 gravityV(entity->GetCenterX() - GetCenterX(),
@@ -421,7 +421,7 @@ void CEntity::GravityForce(CEntity* entity, float frameTime) {
     NSMath::Vector2Normalize(&gravityV);
 
     // 중력의 힘에 의해 정규화된 벡터를 곱해 중력 벡터를 구한다.
-    gravityV *= force * frameTime;
+    gravityV *= m_force * frameTime;
 
     // 우주선의 방향을 바꾸는 중력 벡터를 우주선의 속력 벡터에 추가한다.
     m_velocity += gravityV;

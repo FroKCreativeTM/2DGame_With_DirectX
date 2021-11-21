@@ -18,7 +18,7 @@ bool CTextureManager::Initialize(CGraphics* g, const char* f) {
 		m_graphics = g;
 		m_fileName = f;
 
-		m_result = m_graphics->LoadTexture(m_fileName, TRANSCOLOR, 
+		m_result = m_graphics->LoadTexture(m_fileName, NSGraphics::TRANSCOLOR, 
 			m_width, m_height, m_texture);
 
 		if (FAILED(m_result)) {
@@ -47,6 +47,6 @@ void CTextureManager::OnResetDevice() {
 	if (!m_initialized) {
 		return;
 	}
-	m_graphics->LoadTexture(m_fileName, TRANSCOLOR, 
+	m_graphics->LoadTexture(m_fileName, NSGraphics::TRANSCOLOR,
 		m_width, m_height, m_texture);
 }

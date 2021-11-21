@@ -52,6 +52,9 @@
     <Filter Include="01. GameEngine\02. Graphics\04. Console">
       <UniqueIdentifier>{7a1a5104-8f4c-4e05-9926-0a001c2f040b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. SpaceWar\02. Scene">
+      <UniqueIdentifier>{c02c1fb9-b6af-4e0e-a66c-911760ad07ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Macro.h">
@@ -102,11 +105,14 @@
     <ClInclude Include="Graphics\CTextDX.h">
       <Filter>01. GameEngine\02. Graphics\03. Text</Filter>
     </ClInclude>
-    <ClInclude Include="Graphics\CConsole.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Entity\CTorpedo.h">
       <Filter>02. SpaceWar\01. Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics\CConsole.h">
+      <Filter>01. GameEngine\02. Graphics\04. Console</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\CDashboard.h">
+      <Filter>02. SpaceWar\02. Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -149,11 +155,14 @@
     <ClCompile Include="Graphics\CTextDX.cpp">
       <Filter>01. GameEngine\02. Graphics\03. Text</Filter>
     </ClCompile>
-    <ClCompile Include="Graphics\CConsole.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Entity\CTorpedo.cpp">
       <Filter>02. SpaceWar\01. Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics\CConsole.cpp">
+      <Filter>01. GameEngine\02. Graphics\04. Console</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\CDashboard.cpp">
+      <Filter>02. SpaceWar\02. Scene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

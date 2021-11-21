@@ -125,7 +125,7 @@ void CShip::Update(float frameTime) {
         break;
     }
 
-    m_spriteData.angle += frameTime * NSShip::ROTATION_RATE; // 우주선을 회전 시킨다.
+    m_spriteData.angle += frameTime * m_rotation; // 우주선을 회전 시킨다.
     m_spriteData.x += frameTime * m_velocity.x; // x축을 따라 우주선을 이동시킵니다.
     m_spriteData.y += frameTime * m_velocity.y; // y축을 따라 우주선을 이동시킵니다.
 
@@ -145,19 +145,55 @@ void CShip::Update(float frameTime) {
 
     else if (m_spriteData.y < -NSShip::HEIGHT) { // 왼쪽 모서리 충돌
         m_spriteData.y = GAME_HEIGHT;
+    }    
+}
+
+void CShip::Damage(WEAPON weapon) {
+    if (m_isShieldOn) {
+        return;  // 쉴드가 쳐져 있다면 행동하지 않는다.
     }
 
-    
+    switch (weapon)
+    {
+    case WEAPON::TORPEDO:
+        m_pAudio->PlayCue(TORPEDO_HIT);
+        m_health -= NSShip::TORPEDO_DAMAGE;
+        break;
+    case WEAPON::SHIP:
+        m_pAudio->PlayCue(COLLIDE);
+        m_health -= NSShip::SHIP_DAMAGE;
+        break;
+    case WEAPON::PLANET:
+        m_health = 0;
+        break;
+    }
+
+    if (m_health <= 0) {
+        Explode();
+    }
+    else {
+        m_isShieldOn = true;
+    }
 }
 
-void CShip::Damage(int weapon) {
-    m_isShieldOn = true;
+void CShip::Explode() {
+    m_pAudio->PlayCue(EXPLODE);
+    m_active = false;
+    m_health = 0;
+    m_isExplosionOn = true;
+    m_isEngineOn = false;
+    m_isShieldOn = false;
+    m_velocity.x = 0;
+    m_velocity.y = 0;
 }
 
-void CShip::Explode()
-{
-}
-
-void CShip::Repair()
-{
+void CShip::Repair() {
+    m_active = true;
+    m_health = FULL_HEALTH;
+    m_isExplosionOn = false;
+    m_isEngineOn = false;
+    m_isShieldOn = false;
+    m_rotation = 0.0f;
+    m_direction = NSShip::DIRECTION::NONE;
+    m_visible = true;
 }
